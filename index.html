@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factors Influencing Student Academic Performance</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega/5.25.0/vega.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/5.12.0/vega-lite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/6.22.1/vega-embed.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Student Performance Analysis</div>
+                <nav>
+                    <ul>
+                        <li><a href="#introduction" class="active">Introduction</a></li>
+                        <li><a href="#visualizations">Visualizations</a></li>
+                        <li><a href="#summary">Summary</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Understanding Student Academic Performance</h1>
+            <p>Exploring the key factors that influence student success and exam scores</p>
+        </div>
+    </div>
+
+    <section id="introduction">
+        <div class="container">
+            <h2>Introduction</h2>
+            <div class="card">
+                <h3>Project Overview</h3>
+                <p>Student performance is influenced by a combination of academic habits, socio-economic background,
+                    parental involvement, and external environmental factors. By analyzing these diverse factors, we aim
+                    to determine which variables — such as study hours, attendance, motivation levels, and access to
+                    resources — have the greatest impact on academic success and how they interact with each other to
+                    influence student outcomes.</p>
+                <p>Our research question focuses on identifying the key factors influencing student academic performance
+                    and understanding how they impact exam scores. This analysis can provide valuable insights for
+                    educators, policymakers, and parents to design better support systems that improve student outcomes.
+                </p>
+                <p>The analysis plan for our dataset will consist of the following tasks:</p>
+                <ul>
+                    <li><strong>Data Preprocessing:</strong>
+                        <ul>
+                            <li>Handle missing values in Teacher_Quality, Parental_Education_Level, and
+                                Distance_from_Home</li>
+                            <li>Convert categorical variables into numerical values for analysis</li>
+                            <li>Normalize continuous features for better interpretability</li>
+                        </ul>
+                    </li>
+                    <li><strong>Exploratory Data Analysis:</strong>
+                        <ul>
+                            <li>Analyze distribution of exam scores</li>
+                            <li>Conduct correlation analysis between variables</li>
+                            <li>Group students based on performance levels</li>
+                        </ul>
+                    </li>
+                    <li><strong>Key Data Visualizations:</strong>
+                        <ul>
+                            <li>Correlation Heatmap: Visualizes the strength of relationships between numerical
+                                variables using
+                                a color-coded matrix.</li>
+                            <li>Scatterplots (Exam Score vs Numeric Features): Explores the relationships between
+                                numeric variables such as Hours Studied, Attendance,
+                                Sleep Hours, and Previous Scores with exam outcomes.</li>
+                            <li>Box Plots by Categorical Features: Compares the distribution of exam scores across
+                                various categorical factors
+                                such as Motivation Level, Parental Involvement, and Teacher Quality.</li>
+                            <li>Linked Scatter & Box Plot (Interactive Visualization): Allows users to filter by study
+                                hours and exam scores to
+                                examine how sleep hours and performance vary in selected ranges.</li>
+                            <li>Bar Chart (Family Income vs Tutoring Sessions): Shows the number of tutoring sessions
+                                grouped by family income level.</li>
+                            <li>Parental Factors by School Type (Tableau Visualization): Uses size and color to
+                                visualize how school type,
+                                parental education level, and involvement affect average exam scores. </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Data Introduction</h3>
+                <p>Our analysis utilizes the Student Performance Factors Dataset from Kaggle, which contains 6,607
+                    observations and 20 features. The dataset includes a mix of categorical variables (such as school
+                    type and gender) and continuous variables (such as study hours and exam scores). It provides
+                    comprehensive information on various personal, academic, and socio-economic factors that may
+                    influence student success. However, additional data on learning environments, teacher interaction,
+                    and psychological well-being can be better understood with extra analysis.</p>
+                <p>The attributes in our dataset include Hours_Studied, Attendance, Parental_Involvement,
+                    Access_to_Resources, Extracurricular_Activities, Sleep_Hours, Previous_Scores, Motivation_Level,
+                    Internet_Access, Tutoring_Sessions, Family_Income, Teacher_Quality, School_Type, Peer_Influence,
+                    Physical_Activity, Learning_Disabilities, Parental_Education_Level, Distance_from_Home, Gender,
+                    Exam_Score.</p>
+                <p><a href="https://www.kaggle.com/datasets/lainguyn123/student-performance-factors">You can find our
+                        dataset here!</a></p>
+                <img src="kaggle.png" alt="kaggle" style="width:300px; margin-top:10px;">
+
+                <h3>References</h3>
+                <div class="reference">
+                    <p>1. Shields, Liam, Anne Newman, and Debra Satz, "Equality of Educational Opportunity", The
+                        Stanford Encyclopedia of Philosophy (Winter 2023 Edition), Edward N. Zalta & Uri Nodelman (eds.)
+                    </p>
+                    <a href="https://plato.stanford.edu/archives/win2023/entries/equal-ed-opportunity/"
+                        target="_blank">Read More</a>
+                </div>
+                <div class="reference">
+                    <p>2. Tinto, Vincent. "Dropout From Higher Education: A Theoretical Synthesis of Recent Research."
+                        Review of Educational Research, vol. 45, no. 1, Jan. 1975, p. 89.</p>
+                    <a href="https://doi.org/10.2307/1170024" target="_blank">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visualizations">
+        <div class="container">
+            <h2>Visualizations</h2>
+
+            <div class="card">
+                <h3>Visualization 1: Correlation Heatmap of Numerical Features</h3>
+                <iframe src="correlation_heatmap.html" width="100%" height="700px" style="border:none;"></iframe>
+                <p><strong>Summary and Takeaway:</strong> This is a correlation heatmap of numerical features from the
+                    student performance dataset.
+                    It visually represents how strongly each pair of numerical variables is related, using color
+                    intensity to indicate
+                    correlation values. The color bar on the right shows the scale, ranging from -1 (perfect negative
+                    correlation)
+                    to +1 (perfect positive correlation). </p>
+                <p> The correlation heatmap reveals that Attendance is the strongest predictors
+                    of exam scores, followed by Hours Studied and Previous Scores, which also shows a positive but
+                    slightly
+                    weaker correlation. While Tutoring Sessions, Sleep Hours, and Physical Activity show little to no
+                    correlation.
+                    This suggests that consistent academic habits and personal study time are key drivers of
+                    performance, whereas
+                    well-being and support factors may play a less direct role in short-term exam outcomes.</p>
+            </div>
+
+            <div class="card">
+                <h3>Visualization 2: Exam Score vs Numeric Feature</h3>
+                <iframe src="exam_score_vs_numeric_feature.html" width="100%" height="550px"
+                    style="border:none;"></iframe>
+                <p><strong>Summary and Takeaway:</strong> This graph is a scatter plot showing the relationship between
+                    hours studied and exam scores.
+                    Each point represents a student, with the x-axis indicating the number of hours they studied and the
+                    y-axis showing their exam score.
+                    The scatter plots reveal that hours studied has the strongest visible relationship with exam scores.
+                    As students study more, their scores generally increase, with the highest performers often studying
+                    over 25 hours. While there's
+                    still some variation, the trend suggests that increased study time contributes positively to
+                    performance. Attendance, on the other
+                    hand, shows only a slight upward trend. Most students, regardless of how often they attended, scored
+                    between 60 and 80, indicating
+                    that attendance alone doesn't strongly influence outcomes. </p>
+                <p> Sleep hours appear to have no meaningful impact on exam scores. Students across all sleep
+                    ranges—from 4 to 10 hours—achieved similar
+                    results, suggesting that while sleep may affect general well-being, it doesn't directly reflect in
+                    exam performance in this dataset.
+                    Surprisingly, previous scores also show only a mild correlation. Although one might expect strong
+                    past performance to predict future
+                    success, the plot reveals a wide variation in current exam results among students with high previous
+                    scores. This implies that while
+                    previous performance offers some context, it's not a guaranteed indicator of current outcomes, and
+                    other factors like effort, motivation,
+                    and support may play a greater role.</p>
+            </div>
+
+            <div class="card">
+                <h3>Visualization 3: Exam Score by Categorical Feature</h3>
+                <iframe src="exam_score_by_categorical_feature.html" width="100%" height="570px"
+                    style="border:none;"></iframe>
+                <p><strong>Summary and Takeaway:</strong> This graph is a boxplot comparing exam scores across different
+                    levels of motivation (High,
+                    Medium and Low). Each box represents the distribution of scores for one motivation category, with
+                    the box showing the interquartile
+                    range (IQR), the line inside the box showing the median, and the dots representing outliers. Across
+                    the board, the boxplots reveal
+                    subtle but consistent trends in how different categorical factors relate to exam performance:
+                <ul>
+                    <li> Motivation Level: Students with high or medium motivation have slightly higher average exam
+                        scores than those with low motivation. This suggests that internal drive contributes positively
+                        to performance, though the gap is not huge. </li>
+                    <li> Parental Involvement: Higher parental involvement is associated with better exam scores.
+                        Students with involved parents scored roughly 1.7 points higher on average compared to those
+                        with low involvement, indicating that support at home plays a measurable role. </li>
+                    <li> Access to Resources and Internet Access: These features tend to align with higher scores,
+                        reinforcing the idea that access to educational tools and online learning opportunities provides
+                        an academic advantage. </li>
+                    <li> Teacher Quality: Students taught by teachers rated as "High" quality consistently perform
+                        better. This reflects the importance of effective instruction and teaching support in driving
+                        academic success. </li>
+                    <li> Family Income and Parental Education Level: Students from higher-income households and families
+                        with more educated parents generally perform better, suggesting that socioeconomic background
+                        and educational culture at home matter. </li>
+                    <li> Extracurricular Activities: Those involved in extracurriculars often score slightly higher,
+                        possibly due to better time management, discipline, or mental balance. </li>
+                    <li> Learning Disabilities: Students with identified learning disabilities have lower average
+                        scores, highlighting the need for enhanced academic support structures. </li>
+                    <li> Peer Influence and School Type: Positive peer influence and attending schools with better
+                        reputations (like private or well-resourced public schools) are modestly linked to higher
+                        scores. </li>
+                    <li> Gender and Distance from Home: These show minimal differences, suggesting that performance is
+                        more shaped by academic, social, and support-based factors than demographic or logistical ones.
+                    </li>
+                </ul>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Visualization 4: Linked Scatter & Box Plot</h3>
+                <iframe src="scatter_and_boxplot_linked.html" width="100%" height="400px" style="border:none;"></iframe>
+                <p><strong>Summary and Takeaway:</strong> This graph demonstrates the difference between Hours Studied,
+                    Exam Scores, and Sleep Hours.
+                    On the graph to the left, you can select a range of hours studied and a range of exam scores. After
+                    selecting a range,
+                    you can see boxplots for hours of sleep and exam scores that correlate to the area selected.
+                    Overall, this shows that
+                    sleep hours do not have that much impact on exam scores because it seems like the median for each
+                    amount of sleep is very
+                    close, no matter what range is chosen on the left graph.</p>
+            </div>
+
+            <div class="card">
+                <h3>Visualization 5: Bar Chart (Family Income vs Tutoring Sessions)</h3>
+                <img src="d3_barchart.png" alt="PNG Visualization" width="100%" height="700px"
+                    style="display:block; margin:auto;">
+                <p><strong>Summary and Takeaway:</strong> This bar plot represents the number of tutoring sessions and
+                    family income. Low-income
+                    and high-income families are getting the same number of tutoring sessions, while middle-income
+                    families are getting more. </p>
+            </div>
+
+            <div class="card">
+                <h3>Visualization 6: Parental Factors by School Type (Tableau Visualization)</h3>
+                <img src="ds4200_tableau.jpg" alt="PNG Visualization" width="100%" height="600px"
+                    style="display:block; margin:auto;">
+                <p><strong>Summary and Takeaway:</strong> This visualization demonstrates Parental Education Level,
+                    Parental Involvement, and Average
+                    of Exam Score broken down by School Type. The color represents Parental Education Level and Parental
+                    Involvement. Size
+                    shows the average of the Exam Score. No matter what school type or parental education level,
+                    students with low parental
+                    involvement get lower exam scores than students with medium or high parental involvement.
+                    Additionally, students whose
+                    parents receive a higher level of education seem to do better than students whose parents received a
+                    lower level of education.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="summary">
+        <div class="container">
+            <h2>Summary</h2>
+            <div class="card">
+                <h3>What Did We Learn?</h3>
+                <p>We initially thought that a lot of different variables that could not be easily changed like family
+                    income would
+                    affect the exam scores, however after looking at our visualizations it seems that we were wrong. It
+                    seems like for
+                    the most part the different factors don't affect exam performances at all, with the exception of
+                    hours studied and attendance. </p>
+                <p>Additionally, across different school types and parental education levels, children whose parents are
+                    more involved with their education outperform their peers. Overall it seems like the easiest way to
+                    boost exam scores is to attend class and increase the amount of hours spent studying (in
+                    moderation). </p>
+
+                <h3>Future Work</h3>
+                <p>For future work, this dataset offers a rich opportunity to dive deeper into predictive modeling and
+                    behavioral insights.
+                    One valuable direction would be to build a machine learning model—such as a random forest or
+                    gradient boosting regressor—to
+                    predict exam scores based on both categorical and numerical features. This could help identify
+                    non-obvious patterns and rank
+                    feature importance more precisely. Additionally, clustering techniques could be used to group
+                    students by performance profiles,
+                    revealing distinct learning personas (e.g., high-effort/high-score vs. low-effort/high-score
+                    students).
+                </p>
+                <p>Another area to explore is interaction effects—for example, how motivation level modifies the impact
+                    of study hours or tutoring.
+                    Finally, time-based data, if available in future versions, could help understand trends in
+                    improvement or decline over multiple assessments, offering more personalized insights for educators
+                    and policy-makers.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>DS4200: Information Presentation and Data Visualization</p>
+                <div class="team-members">
+                    <p>Team Members: Suzannah Berezovsky, Kabir Kathuria, Shivani Nikam</p>
+                </div>
+                <p>&copy; 2025 Student Performance Analysis Project</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
