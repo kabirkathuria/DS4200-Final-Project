@@ -147,6 +147,84 @@ section {
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
 }
 
+/* Table styles */
+.table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+}
+
+.data-table th, 
+.data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.data-table th {
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f8f9ff;
+}
+
+.data-table tr:hover {
+    background-color: #f0f4ff;
+}
+
+/* Analysis plan styles */
+.analysis-plan ul {
+    padding-left: 20px;
+}
+
+.analysis-plan ul ul {
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+.analysis-plan li {
+    margin-bottom: 10px;
+}
+
+.analysis-plan ul ul li {
+    margin-bottom: 5px;
+}
+
+/* Visualization styles */
+.viz-container {
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.visualization-flow {
+    background-color: #f0f4ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+/* Future work styles */
+.future-work ul {
+    padding-left: 20px;
+}
+
+.future-work li {
+    margin-bottom: 15px;
+}
+
 .visualization-container {
     background-color: #fff;
     padding: 2rem;
